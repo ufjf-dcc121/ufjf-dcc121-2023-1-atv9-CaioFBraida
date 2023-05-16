@@ -41,8 +41,14 @@
             const idade = form.idade.value;
             const nomeCompleto = `${nome} ${sobrenome}, ${idade} anos`; // esse dolar é um local que acontece operaçoes e aas crases sao uma forma de representar strings; ec `2 + 3` imprime exatamente isso , se poe entre chaves e doar imprime 5
             
-            elemento.innerHTML = `Olá <span>${nomeCompleto}</span>!`; // em vez do textContent usa o innerHTML - pro span entrar , ele usa
+            elemento.innerHTML = `Olá <span>${nomeCompleto}</span>!`; // em vez do textContent usa o innerHTML - pro span entrar , ele incremente no proprio html e n no valor 
 
+            //form.nome.value = "";
+            //form.sobrenome.value = "";
+            //form.idade.value = "";
+            // em vez de escrever isso tudo usa:
+            form.reset();
+            form.nome.focus(); //retorna o cursor para o nome
         }
     </script>
 </body>
