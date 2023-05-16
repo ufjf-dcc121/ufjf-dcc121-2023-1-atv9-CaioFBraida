@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 9: forms</title>
+
+    <style>
+        p>span {
+            color: darkgreen;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,10 +26,12 @@
             <input type="submit" />
             <input type="reset" />
         </form>
+        <p></p>
     </main>
     <script>
         const form = document.querySelector("form");
         form.addEventListener("submit", aoEnviar);
+        const elemento = document.querySelector("p");
 
         function aoEnviar(evento){
             evento.preventDefault(); // esta alterando o comportamento padrao de enviar para o servidor , esta ficando no lado do cliente e os dados seram tratados aqui
@@ -32,7 +40,8 @@
             const sobrenome = form.sobrenome.value;
             const idade = form.idade.value;
             const nomeCompleto = `${nome} ${sobrenome}, ${idade} anos`; // esse dolar é um local que acontece operaçoes e aas crases sao uma forma de representar strings; ec `2 + 3` imprime exatamente isso , se poe entre chaves e doar imprime 5
-            console.log(nomeCompleto);
+            
+            elemento.innerHTML = `Olá <span>${nomeCompleto}</span>!`; // em vez do textContent usa o innerHTML - pro span entrar , ele usa
 
         }
     </script>
