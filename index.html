@@ -16,7 +16,7 @@
         <form action="">
             <input type="text" name="nome" />
             <input type="text" name="sobrenome" />
-            <input type="text" name="idade" />
+            <input type="number" name="idade" />  
             <input type="submit" />
             <input type="reset" />
         </form>
@@ -28,6 +28,12 @@
         function aoEnviar(evento){
             evento.preventDefault(); // esta alterando o comportamento padrao de enviar para o servidor , esta ficando no lado do cliente e os dados seram tratados aqui
             console.log("Hello, form!");
+            const nome = form.nome.value;
+            const sobrenome = form.sobrenome.value;
+            const idade = form.idade.value;
+            const nomeCompleto = `${nome} ${sobrenome}, ${idade} anos`; // esse dolar é um local que acontece operaçoes e aas crases sao uma forma de representar strings; ec `2 + 3` imprime exatamente isso , se poe entre chaves e doar imprime 5
+            console.log(nomeCompleto);
+
         }
     </script>
 </body>
