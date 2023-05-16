@@ -27,11 +27,14 @@
             <input type="reset" />
         </form>
         <p></p>
+        <h2>Visitas passadas:</h2>
+        <ol></ol>
     </main>
     <script>
         const form = document.querySelector("form");
         form.addEventListener("submit", aoEnviar);
         const elemento = document.querySelector("p");
+        const ol = document.querySelector("ol")
 
         function aoEnviar(evento){
             evento.preventDefault(); // esta alterando o comportamento padrao de enviar para o servidor , esta ficando no lado do cliente e os dados seram tratados aqui
@@ -42,6 +45,7 @@
             const nomeCompleto = `${nome} ${sobrenome}, ${idade} anos`; // esse dolar é um local que acontece operaçoes e aas crases sao uma forma de representar strings; ec `2 + 3` imprime exatamente isso , se poe entre chaves e doar imprime 5
             
             elemento.innerHTML = `Olá <span>${nomeCompleto}</span>!`; // em vez do textContent usa o innerHTML - pro span entrar , ele incremente no proprio html e n no valor 
+            //evita ao maximo inner html -> so em casos mt mt simples
 
             //form.nome.value = "";
             //form.sobrenome.value = "";
@@ -49,7 +53,39 @@
             // em vez de escrever isso tudo usa:
             form.reset();
             form.nome.focus(); //retorna o cursor para o nome
+
+            adicionaPessoa(nome, sobrenome, idade);
+            
+
         }
+
+
+        function adicionaPessoa(nome, sobrenome, idade){
+            const li = document.createElement('li');
+            const divPessoa = document.createElement('div');
+            divPessoa.classList.add("pessoa");
+
+            const spanNome = document.createElement('div');
+            spanNome.classList.add('nome');
+            spanNome.textContent = nome;
+            divPessoa.appendChild(spanNome);
+
+            const spanSobrenome = document.createElement('div');
+            spanSobrenome.classList.add('sobrenome');
+            spanSobrenome.textContent = sobrenome;
+            divPessoa.appendChild(spanSobrenome);
+
+            const spanIdade = document.createElement('div');
+            spanIdade.classList.add('idade');
+            spanIdade.textContent = idade;
+            divPessoa.appendChild(spanIdade);
+
+
+            li.appendChild(divPessoa)
+
+            ol.appendChild(li); //ligando o li criado a nossa pagina para aparecer no ol dele
+        }
+        
     </script>
 </body>
 
